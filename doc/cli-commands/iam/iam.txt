@@ -1,15 +1,23 @@
 Create User
-aws iam create-user --username test_user1
+>> aws iam create-user --username test_user1
 
 Create Login Profile
- - Download login-profile.json (To feed the data as json document)
- aws iam create-login-profile --generate-cli-skeleton>login-profile.json
- Hit command "pwd" & see path
- Download file from actions download and add path follwed by filename & download file
- Fill data & reupload to aws cloudshell path & restart aws terminal from action
-
- - aws iam create-login-profile --cli-input-json file://login-profile.json
- User will get the console login profile
+#Download login-profile.json (To feed the data as json document)
+>> aws iam create-login-profile --generate-cli-skeleton>login-profile.json
+#Hit command "pwd" & see path
+#Download file from actions download and add path follwed by filename & download file
+#Fill data & reupload to aws cloudshell path & restart aws terminal from action
+>> aws iam create-login-profile --cli-input-json file://login-profile.json
+#User will get the console login profile
  
- Attach user policy
- aws iam attach-user-policy --user-name test_user1 --policy-arn arn_string     ==> arn ex: arn:aws:iam::aws:policy/AmazonS3FullAccess
+Attach user policy
+>> aws iam attach-user-policy --user-name test_user1 --policy-arn arn_string
+#arn ex: arn:aws:iam::aws:policy/AmazonS3FullAccess
+
+Create access key
+>> aws iam create-access-key --user-name test_user1
+
+Create user group and add a user to it
+>> aws iam create-group --group-name test_users
+>> aws iam add-user-to-group --user-name test_user1 --group-name test_users
+

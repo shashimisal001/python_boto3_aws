@@ -6,7 +6,8 @@ def all_users():
     paginator = iam.get_paginator("list_users")
     for response in paginator.paginate():
         for user in response["Users"]:
-            print(user)
+            tags = iam.list_user_tags(UserName=user["UserName"])
+            print("Username: {}, Tags: {}".format(user['UserName'], tags['Tags']))
 
 
 all_users()
